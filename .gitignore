@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets
+.env
+.streamlit/secrets.toml
+
+# Raw datasets
+data/raw/*
+!data/raw/.gitkeep
+
+# Generated files
+models/*.joblib
+reports/*.csv
+
+# Jupyter
+.ipynb_checkpoints/
