@@ -16,5 +16,3 @@ data/raw/*
 models/*.joblib
 reports/*.csv
 
-# Jupyter
-.ipynb_checkpoints/
