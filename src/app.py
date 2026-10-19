@@ -6,9 +6,6 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-# --------------------------------------------------
-# 1. PROJECT PATHS
-# --------------------------------------------------
 ROOT = Path(__file__).resolve().parents[1]
 
 DATA_PATH = ROOT / "data" / "raw" / "train.csv"
@@ -26,10 +23,6 @@ FEATURES = [
 
 TARGET = "SalePrice"
 
-
-# --------------------------------------------------
-# 2. PAGE CONFIGURATION
-# --------------------------------------------------
 st.set_page_config(
     page_title="House Price Predictor",
     page_icon="🏠",
@@ -37,10 +30,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-
-# --------------------------------------------------
-# 3. CUSTOM DARK NAVY THEME
-# --------------------------------------------------
 st.markdown(
     """
     <style>
@@ -182,10 +171,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-
-# --------------------------------------------------
-# 4. LOAD DATA, MODEL, AND METRICS
-# --------------------------------------------------
 @st.cache_data
 def load_data(path_string):
     path = Path(path_string)
@@ -265,10 +250,6 @@ if model_features is not None and list(model_features) != FEATURES:
     )
     st.stop()
 
-
-# --------------------------------------------------
-# 5. SIDEBAR NAVIGATION
-# --------------------------------------------------
 with st.sidebar:
     st.markdown("# 🏠 House Price Predictor")
     st.caption("MACHINE LEARNING DASHBOARD")
@@ -291,11 +272,6 @@ with st.sidebar:
     st.caption(f"Training records: {len(df):,}")
     st.caption("Input features: 6")
 
-
-
-# --------------------------------------------------
-# 6. DASHBOARD HEADER
-# --------------------------------------------------
 st.markdown(
     """
     <div class="hero">
@@ -308,18 +284,10 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-
-# --------------------------------------------------
-# 7. SHARED DATASET INSIGHTS
-# --------------------------------------------------
 average_price = df[TARGET].mean()
 median_price = df[TARGET].median()
 average_area = df["GrLivArea"].mean()
 
-
-# ==================================================
-# PAGE 1: PRICE PREDICTION
-# ==================================================
 if page == "🏡 Price Prediction":
 
     st.markdown(
@@ -465,9 +433,6 @@ if page == "🏡 Price Prediction":
             st.error(f"Prediction failed: {error}")
 
 
-# ==================================================
-# PAGE 2: DATA ANALYTICS
-# ==================================================
 elif page == "📊 Data Analytics":
 
     st.markdown(
@@ -603,10 +568,6 @@ elif page == "📊 Data Analytics":
                 use_container_width=True,
             )
 
-
-# --------------------------------------------------
-# 8. FOOTER
-# --------------------------------------------------
 st.divider()
 
 st.markdown(
